@@ -38,4 +38,35 @@ public class UtilTool {
 		}
 		return result;
 	}
+	public static List<String> readLineFromFile(String fileName)
+	{
+		List<String> result = new ArrayList<String>();
+		BufferedReader in = null;
+		try
+		{
+			in= new BufferedReader(new FileReader(fileName));
+
+			String line;
+			while((line = in.readLine()) != null)
+			{
+			   if(line.trim().length() != 0)
+				   result.add(line);
+			}
+		}
+		catch(IOException e)
+		{
+		
+		}
+		finally
+		{
+			if(in!=null)
+			{
+				try
+				{in.close();}
+				catch(IOException e)
+				{}
+			}				
+		}
+		return result;
+	}
 }
